@@ -9,21 +9,46 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="Unit">
-            <directory suffix="Test.php">./tests/Unit</directory>
+        <testsuite name="All-Feature">
+            <directory suffix="Test.php">./Modules/**/Tests/Feature</directory>
+            <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
 
-        <testsuite name="Feature">
-            <directory suffix="Test.php">./tests/Feature</directory>
+        <testsuite name="All-Unit">
+            <directory suffix="Test.php">./Modules/**/Tests/Unit</directory>
+            <directory suffix="Test.php">./tests/Unit</directory>
         </testsuite>
     </testsuites>
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">./app</directory>
+            <directory suffix=".php">./Modules</directory>
+            <exclude>
+                <directory>./Modules/**/Config</directory>
+                <directory>./Modules/**/Resources</directory>
+                <directory>./Modules/**/Routes</directory>
+                <directory>./Modules/**/Tests</directory>
+            </exclude>
         </whitelist>
     </filter>
     <php>
         <server name="APP_ENV" value="testing"/>
+
+        <!-- APP_KEY for integration http test -->
+        <server name="APP_KEY" value="base64:eUCrP4irYz87PJ/+pRBVg+R6h4pOkbkE4ptokjqTF+E=" />
+        <!-- Disable debug to speed up test -->
+        <server name="APP_DEBUG" value="false" />
+
+        <!-- Using SQLite in memory database test -->
+        <server name="DB_CONNECTION" value="sqlite" />
+        <server name="DB_DATABASE" value=":memory:" />
+        <!-- Or if want to use docker mysql -->
+        <!-- <server name="DB_CONNECTION" value="mysql" /> -->
+        <!-- <server name="DB_HOST" value="mysql" /> -->
+        <!-- <server name="DB_DATABASE" value="laravel_test" /> -->
+        <!-- <server name="DB_USERNAME" value="laravel_test" /> -->
+        <!-- <server name="DB_PASSWORD" value="secret" /> -->
+
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
         <server name="MAIL_DRIVER" value="array"/>
