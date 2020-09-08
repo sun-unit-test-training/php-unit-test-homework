@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+    php:
+        restart: always
+        image: sun7pro/phpunit-laravel:php7.4
+        volumes:
+            - ./:/var/www/html
+        expose:
+            - "80"
+        ports:
+            - "1234:80"
+    mysql:
+        restart: always
+        image: mysql:5.7
+        command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+        volumes:
+            - ./.docker/images/mysql/init:/docker-entrypoint-initdb.d
+            - ./.docker/data/mysql:/var/lib/mysql
+        expose:
+            - "3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+    # mail-server:
+    #     restart: always
+    #     image: mailhog/mailhog
+    #     user: root # Needed if using maildir
+    #     environment:
+    #         MH_STORAGE: maildir
+    #         MH_MAILDIR_PATH: /var/data/mailhog
+    #     volumes:
+    #         - ./docker/dev/data/mailhog:/var/data/mailhog
+    #     expose:
+    #         - "1025" # SMTP Server to send mail
+    #         - "8025" # HTTP Server to check mail
+    #     ports:
+    #         - "8084:8025"
+    # adminer:
+    #     restart: always
+    #     image: adminer
+    #     expose:
+    #         - "8080"
+    #     ports:
+    #         - "8088:8080"
+    #     environment:
+    #         ADMINER_DEFAULT_SERVER: mysql
+    #         ADMINER_DESIGN: "pappu687"

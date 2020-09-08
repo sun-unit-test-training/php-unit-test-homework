@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<ruleset name="Framgia Extended">
+    <description>Framgia Extended Coding Convention</description>
+    <arg name="tab-width" value="4"/>
+    <arg name="extensions" value="php"/>
+    <arg name="encoding" value="UTF-8"/>
+    <config name="ignore_warnings_on_exit" value="1"/>
+
+    <file>./app</file>
+    <file>./Modules</file>
+    <exclude-pattern>./Modules/**/Resources</exclude-pattern>
+
+    <rule ref="Framgia"/>
+    <!-- Ignore function naming convention in tests/ -->
+    <rule ref="PSR1.Methods.CamelCapsMethodName.NotCamelCaps">
+        <exclude-pattern>tests/**/*.php</exclude-pattern>
+        <exclude-pattern>Tests/**/*.php</exclude-pattern>
+    </rule>
+</ruleset>
