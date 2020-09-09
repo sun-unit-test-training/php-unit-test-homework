@@ -1,0 +1,13 @@
+{
+    "name": "Exercise08",
+    "alias": "exercise08",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Exercise08\\Providers\\Exercise08ServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

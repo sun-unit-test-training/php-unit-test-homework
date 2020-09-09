@@ -9,14 +9,51 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="All-Feature">
+        <testsuite name="All">
+            <directory suffix="Test.php">./Modules/**/Tests/Unit</directory>
+            <directory suffix="Test.php">./tests/Unit</directory>
             <directory suffix="Test.php">./Modules/**/Tests/Feature</directory>
             <directory suffix="Test.php">./tests/Feature</directory>
         </testsuite>
-
-        <testsuite name="All-Unit">
-            <directory suffix="Test.php">./Modules/**/Tests/Unit</directory>
-            <directory suffix="Test.php">./tests/Unit</directory>
+        <testsuite name="Exercise01">
+            <directory suffix="Test.php">./Modules/Exercise01/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise01/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise02">
+            <directory suffix="Test.php">./Modules/Exercise02/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise02/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise03">
+            <directory suffix="Test.php">./Modules/Exercise03/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise03/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise04">
+            <directory suffix="Test.php">./Modules/Exercise04/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise04/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise05">
+            <directory suffix="Test.php">./Modules/Exercise05/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise05/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise06">
+            <directory suffix="Test.php">./Modules/Exercise06/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise06/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise07">
+            <directory suffix="Test.php">./Modules/Exercise07/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise07/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise08">
+            <directory suffix="Test.php">./Modules/Exercise08/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise08/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise09">
+            <directory suffix="Test.php">./Modules/Exercise09/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise09/Tests/Feature</directory>
+        </testsuite>
+        <testsuite name="Exercise10">
+            <directory suffix="Test.php">./Modules/Exercise10/Tests/Unit</directory>
+            <directory suffix="Test.php">./Modules/Exercise10/Tests/Feature</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -28,6 +65,8 @@
                 <directory>./Modules/**/Resources</directory>
                 <directory>./Modules/**/Routes</directory>
                 <directory>./Modules/**/Tests</directory>
+                <!-- Mostly included auto-generated files, so ignore now? -->
+                <directory>./Modules/**/Providers</directory>
             </exclude>
         </whitelist>
     </filter>

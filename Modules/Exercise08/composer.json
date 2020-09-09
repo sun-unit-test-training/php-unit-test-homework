@@ -1,0 +1,17 @@
+{
+    "name": "sunasterisk/exercise08",
+    "description": "",
+    "extra": {
+        "laravel": {
+            "providers": [],
+            "aliases": {
+
+            }
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Modules\\Exercise08\\": ""
+        }
+    }
+}
