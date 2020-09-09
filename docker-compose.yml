@@ -8,8 +8,6 @@ services:
             - ./:/var/www/html
         expose:
             - "80"
-        ports:
-            - "1234:80"
     mysql:
         restart: always
         image: mysql:5.7
