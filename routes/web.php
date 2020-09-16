@@ -12,5 +12,15 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    for ($i = 1; $i <= 10; ++$i) {
+        $exerciseNo = str_pad($i, 2, '0', STR_PAD_LEFT);
+        $links[] = [
+            'url' => '/exercise' . $exerciseNo,
+            'text' => __('Exercise :no', ['no' => $exerciseNo]),
+        ];
+    }
+
+    return view('welcome', [
+        'links' => $links,
+    ]);
 });

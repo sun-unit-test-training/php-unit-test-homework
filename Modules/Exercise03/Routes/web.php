@@ -11,6 +11,7 @@
 |
 */
 
-Route::prefix('exercise03')->group(function () {
-    Route::get('/', 'Exercise03Controller@index');
+Route::prefix('exercise03')->name('exercise03.')->group(function () {
+    Route::get('/', 'ProductController@index')->name('index');
+    Route::post('/', 'ProductController@checkout')->name('checkout');
 });

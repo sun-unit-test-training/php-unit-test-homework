@@ -4,16 +4,15 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Module Exercise08</title>
+        <title>Module Exercise08 - Tính phí sân chơi cầu lông.</title>
 
-       {{-- Laravel Mix - CSS File --}}
-       {{-- <link rel="stylesheet" href="{{ mix('css/exercise08.css') }}"> --}}
-
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     </head>
-    <body>
-        @yield('content')
+    <body class="bg-light">
 
-        {{-- Laravel Mix - JS File --}}
-        {{-- <script src="{{ mix('js/exercise08.js') }}"></script> --}}
+        <div class="container">
+            @yield('content')
+        </div>
     </body>
 </html>

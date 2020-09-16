@@ -12,5 +12,6 @@
 */
 
 Route::prefix('exercise07')->group(function () {
-    Route::get('/', 'Exercise07Controller@index');
+    Route::get('/', 'CheckoutController@index')->name('checkout.index');
+    Route::post('/', 'CheckoutController@store')->name('checkout.store');
 });

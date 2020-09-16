@@ -12,5 +12,5 @@
 */
 
 Route::prefix('exercise04')->group(function () {
-    Route::get('/', 'Exercise04Controller@index');
+    Route::get('/', 'CalendarController@index')->name('calendar');
 });

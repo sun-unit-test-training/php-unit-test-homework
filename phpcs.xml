@@ -16,4 +16,9 @@
         <exclude-pattern>tests/**/*.php</exclude-pattern>
         <exclude-pattern>Tests/**/*.php</exclude-pattern>
     </rule>
+    <!-- Ignore method scope (public, private, protected) convention in tests/ -->
+    <rule ref="Squiz.Scope.MethodScope.Missing">
+        <exclude-pattern>tests/**/*.php</exclude-pattern>
+        <exclude-pattern>Tests/**/*.php</exclude-pattern>
+    </rule>
 </ruleset>

@@ -13,4 +13,5 @@
 
 Route::prefix('exercise10')->group(function () {
     Route::get('/', 'Exercise10Controller@index');
+    Route::post('/', 'Exercise10Controller@prepaid');
 });

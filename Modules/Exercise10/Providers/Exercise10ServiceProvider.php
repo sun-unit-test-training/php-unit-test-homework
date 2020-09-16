@@ -40,6 +40,18 @@ class Exercise10ServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+
+        // Service
+        $this->app->bind(
+            \Modules\Exercise10\Contracts\Services\PrepaidInterface::class,
+            \Modules\Exercise10\Services\PrepaidCardService::class
+        );
+
+        // Repository
+        $this->app->singleton(
+            \Modules\Exercise10\Contracts\Repositories\CardLevelRepository::class,
+            \Modules\Exercise10\Repositories\CardLevelEloquent::class
+        );
     }
 
     /**

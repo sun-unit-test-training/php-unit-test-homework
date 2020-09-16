@@ -1,4 +1,6 @@
 # PHP unit test training
+**NOTE**: this is ***beginner*** course, so we try to implement it in simple way.
+- Write Feature Test
 
 ## Setup
 ```sh
@@ -35,3 +37,5 @@ Run only one module (see testsuites in `phpunit.xml`)
 ```sh
 ./phpunit.sh --coverage-html=coverage --testsuite=Exercise01
 ```
+
+**NOTE**: You can edit file `./phpunit.sh` to use other phpunit code coverage driver. `pcov` or `phpdbg` can generate code coverage much faster than `xdebug`. Please try!

@@ -12,5 +12,6 @@
 */
 
 Route::prefix('exercise09')->group(function () {
-    Route::get('/', 'Exercise09Controller@index');
+    Route::get('/', 'Exercise09Controller@index')->name('boss.index');
+    Route::post('/', 'Exercise09Controller@attack')->name('boss.attack');
 });

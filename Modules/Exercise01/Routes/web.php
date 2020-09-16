@@ -12,5 +12,6 @@
 */
 
 Route::prefix('exercise01')->group(function () {
-    Route::get('/', 'Exercise01Controller@index');
+    Route::get('/', 'OrderController@showForm');
+    Route::post('/', 'OrderController@create');
 });

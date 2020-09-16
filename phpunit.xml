@@ -10,50 +10,39 @@
          stopOnFailure="false">
     <testsuites>
         <testsuite name="All">
-            <directory suffix="Test.php">./Modules/**/Tests/Unit</directory>
             <directory suffix="Test.php">./tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/**/Tests/Feature</directory>
             <directory suffix="Test.php">./tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/**/Tests</directory>
         </testsuite>
         <testsuite name="Exercise01">
-            <directory suffix="Test.php">./Modules/Exercise01/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise01/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise01/Tests</directory>
         </testsuite>
         <testsuite name="Exercise02">
-            <directory suffix="Test.php">./Modules/Exercise02/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise02/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise02/Tests</directory>
         </testsuite>
         <testsuite name="Exercise03">
-            <directory suffix="Test.php">./Modules/Exercise03/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise03/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise03/Tests</directory>
         </testsuite>
         <testsuite name="Exercise04">
-            <directory suffix="Test.php">./Modules/Exercise04/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise04/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise04/Tests</directory>
         </testsuite>
         <testsuite name="Exercise05">
-            <directory suffix="Test.php">./Modules/Exercise05/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise05/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise05/Tests</directory>
         </testsuite>
         <testsuite name="Exercise06">
-            <directory suffix="Test.php">./Modules/Exercise06/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise06/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise06/Tests</directory>
         </testsuite>
         <testsuite name="Exercise07">
-            <directory suffix="Test.php">./Modules/Exercise07/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise07/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise07/Tests</directory>
         </testsuite>
         <testsuite name="Exercise08">
-            <directory suffix="Test.php">./Modules/Exercise08/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise08/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise08/Tests</directory>
         </testsuite>
         <testsuite name="Exercise09">
-            <directory suffix="Test.php">./Modules/Exercise09/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise09/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise09/Tests</directory>
         </testsuite>
         <testsuite name="Exercise10">
-            <directory suffix="Test.php">./Modules/Exercise10/Tests/Unit</directory>
-            <directory suffix="Test.php">./Modules/Exercise10/Tests/Feature</directory>
+            <directory suffix="Test.php">./Modules/Exercise10/Tests</directory>
         </testsuite>
     </testsuites>
     <filter>
@@ -62,6 +51,7 @@
             <directory suffix=".php">./Modules</directory>
             <exclude>
                 <directory>./Modules/**/Config</directory>
+                <directory>./Modules/**/Database</directory>
                 <directory>./Modules/**/Resources</directory>
                 <directory>./Modules/**/Routes</directory>
                 <directory>./Modules/**/Tests</directory>

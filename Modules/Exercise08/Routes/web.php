@@ -12,5 +12,6 @@
 */
 
 Route::prefix('exercise08')->group(function () {
-    Route::get('/', 'Exercise08Controller@index');
+    Route::get('/', 'TicketController@index')->name('ticket.index');
+    Route::post('calculate', 'TicketController@calculatePrice')->name('ticket.calculate');
 });
