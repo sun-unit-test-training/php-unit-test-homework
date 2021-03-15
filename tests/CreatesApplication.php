@@ -19,6 +19,8 @@ trait CreatesApplication
 
         $app->make(Kernel::class)->bootstrap();
 
+        // Improve error handling for Mockery mock exception
+        // See: https://github.com/laravel/ideas/issues/2528
         $app->instance(ExceptionHandler::class, new class($app) extends Handler {
             public function render($request, \Throwable $e)
             {
