@@ -1,13 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<phpunit backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="tests/bootstrap.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="./vendor/phpunit/phpunit/phpunit.xsd"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+>
     <testsuites>
         <testsuite name="All">
             <directory suffix="Test.php">./tests/Unit</directory>
@@ -45,48 +41,31 @@
             <directory suffix="Test.php">./Modules/Exercise10/Tests</directory>
         </testsuite>
     </testsuites>
-    <filter>
-        <whitelist processUncoveredFilesFromWhitelist="true">
+    <coverage processUncoveredFiles="true">
+        <include>
             <directory suffix=".php">./app</directory>
             <directory suffix=".php">./Modules</directory>
-            <exclude>
-                <directory>./Modules/**/Config</directory>
-                <directory>./Modules/**/Database</directory>
-                <directory>./Modules/**/Resources</directory>
-                <directory>./Modules/**/Routes</directory>
-                <directory>./Modules/**/Tests</directory>
-                <!-- Mostly included auto-generated files, so ignore now? -->
-                <directory>./Modules/**/Providers</directory>
-            </exclude>
-        </whitelist>
-    </filter>
+        </include>
+        <exclude>
+            <directory>./Modules/**/Config</directory>
+            <directory>./Modules/**/Database</directory>
+            <directory>./Modules/**/Resources</directory>
+            <directory>./Modules/**/Routes</directory>
+            <directory>./Modules/**/Tests</directory>
+            <directory>./Modules/**/Providers</directory>
+        </exclude>
+    </coverage>
     <php>
         <server name="APP_ENV" value="testing"/>
-
-        <!-- APP_KEY for integration http test -->
-        <server name="APP_KEY" value="base64:eUCrP4irYz87PJ/+pRBVg+R6h4pOkbkE4ptokjqTF+E=" />
         <!-- Disable debug to speed up test -->
         <server name="APP_DEBUG" value="false" />
-
-        <!-- Using SQLite in memory database test -->
-        <server name="DB_CONNECTION" value="sqlite" />
-        <server name="DB_DATABASE" value=":memory:" />
-        <!-- Or if want to use docker mysql -->
-        <!-- <server name="DB_CONNECTION" value="mysql" /> -->
-        <!-- <server name="DB_HOST" value="mysql" /> -->
-        <!-- <server name="DB_DATABASE" value="laravel_test" /> -->
-        <!-- <server name="DB_USERNAME" value="laravel_test" /> -->
-        <!-- <server name="DB_PASSWORD" value="secret" /> -->
-
         <server name="BCRYPT_ROUNDS" value="4"/>
         <server name="CACHE_DRIVER" value="array"/>
-        <server name="MAIL_DRIVER" value="array"/>
+        <!-- <server name="DB_CONNECTION" value="sqlite"/> -->
+        <!-- <server name="DB_DATABASE" value=":memory:"/> -->
+        <server name="MAIL_MAILER" value="array"/>
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
-        <server name="APP_CONFIG_CACHE" value="bootstrap/cache/config.phpunit.php"/>
-        <server name="APP_SERVICES_CACHE" value="bootstrap/cache/services.phpunit.php"/>
-        <server name="APP_PACKAGES_CACHE" value="bootstrap/cache/packages.phpunit.php"/>
-        <server name="APP_ROUTES_CACHE" value="bootstrap/cache/routes.phpunit.php"/>
-        <server name="APP_EVENTS_CACHE" value="bootstrap/cache/events.phpunit.php"/>
+        <server name="TELESCOPE_ENABLED" value="false"/>
     </php>
 </phpunit>

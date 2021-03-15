@@ -39,7 +39,7 @@ class Exercise02Controller extends Controller
 
         return back()
             ->withInput()
-            ->with('caculate', [
+            ->with('calculate', [
                 'fee' => $fee,
             ]);
     }

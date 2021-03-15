@@ -1,0 +1,33 @@
+{
+    "source": {
+        "directories": [
+            "Modules/"
+        ],
+        "excludes": [
+            "Config",
+            "Database",
+            "Resources",
+            "Routes",
+            "Tests",
+            "Providers"
+        ]
+    },
+    "logs": {
+        "text": "infection.log"
+    },
+    "mutators": {
+        "@default": true,
+        "PublicVisibility": {
+            "ignore": [
+                "Modules\\*\\Http\\Controllers\\*",
+                "Modules\\*\\Models\\*"
+            ]
+        },
+        "ProtectedVisibility": {
+            "ignore": [
+                "Modules\\*\\Http\\Controllers\\*",
+                "Modules\\*\\Models\\*"
+            ]
+        }
+    }
+}

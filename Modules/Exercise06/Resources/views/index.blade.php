@@ -4,7 +4,7 @@
 <div class="card">
     <div class="card-body">
         <h2 class="card-title display-4">{{ __('Tính thời gian gửi xe miễn phí') }}</h2>
-        <form method="post" action="{{ action('\Modules\Exercise06\Http\Controllers\Exercise06Controller@caculate') }}">
+        <form method="post" action="{{ action('\Modules\Exercise06\Http\Controllers\Exercise06Controller@calculate') }}">
             @csrf
             <div class="form-group">
                 <label for="input-bill">{{ __('Tổng hóa đơn') }}</label>
@@ -25,12 +25,12 @@
                 <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
-            @if ($caculate = session('caculate'))
+            @if ($result = session('result'))
             <div class="form-row">
                 <div class="form-group col-md-6 offset-md-6">
                     <dl class="row">
                         <dt class="col-sm-4">{{ __('Số phút gửi xe miễn phí của bạn là:') }}</dt>
-                        <dd class="col-sm-8 text-right">{{ $caculate['time'] }} phút</dd>
+                        <dd class="col-sm-8 text-right">{{ $result['time'] }} phút</dd>
                     </dl>
                 </div>
             </div>

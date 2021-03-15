@@ -3,7 +3,7 @@
 namespace Modules\Exercise03\Services;
 
 use InvalidArgumentException;
-use Modules\Exercise03\Entities\Product;
+use Modules\Exercise03\Models\Product;
 use Modules\Exercise03\Repositories\ProductRepository;
 
 /**

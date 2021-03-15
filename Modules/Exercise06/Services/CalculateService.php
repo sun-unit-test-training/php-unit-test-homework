@@ -2,10 +2,9 @@
 
 namespace Modules\Exercise06\Services;
 
-use Carbon\Carbon;
 use InvalidArgumentException;
 
-class CaculateService
+class CalculateService
 {
     const CASE_1 = [2000, 60];
     const CASE_2 = [5000, 120];

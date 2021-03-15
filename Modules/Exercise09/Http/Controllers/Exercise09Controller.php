@@ -41,6 +41,7 @@ class Exercise09Controller extends Controller
         ]);
 
         $status = $this->attackBossService->calculateAttackResult($data);
+
         return back()
             ->withInput()
             ->with('status', $status);

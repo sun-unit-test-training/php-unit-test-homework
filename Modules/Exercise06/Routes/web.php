@@ -13,5 +13,5 @@
 
 Route::prefix('exercise06')->group(function () {
     Route::get('/', 'Exercise06Controller@index');
-    Route::post('/', 'Exercise06Controller@caculate');
+    Route::post('/', 'Exercise06Controller@calculate');
 });

@@ -2,7 +2,7 @@
 
 namespace Modules\Exercise03\Repositories;
 
-use Modules\Exercise03\Entities\Product;
+use Modules\Exercise03\Models\Product;
 
 /**
  * Class ProductRepository

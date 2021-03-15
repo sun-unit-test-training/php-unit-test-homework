@@ -4,13 +4,13 @@ namespace Modules\Exercise06\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 use Modules\Exercise06\Http\Requests\Exercise06Request;
-use Modules\Exercise06\Services\CaculateService;
+use Modules\Exercise06\Services\CalculateService;
 
 class Exercise06Controller extends Controller
 {
     protected $service;
 
-    public function __construct(CaculateService $service)
+    public function __construct(CalculateService $service)
     {
         $this->service = $service;
     }
@@ -24,14 +24,14 @@ class Exercise06Controller extends Controller
         ]);
     }
 
-    public function caculate(Exercise06Request $request)
+    public function calculate(Exercise06Request $request)
     {
         $inputs = $request->validated();
         $time = $this->service->calculate($inputs['bill'], isset($inputs['has_watch']));
 
         return back()
             ->withInput()
-            ->with('caculate', [
+            ->with('result', [
                 'time' => $time,
             ]);
     }
