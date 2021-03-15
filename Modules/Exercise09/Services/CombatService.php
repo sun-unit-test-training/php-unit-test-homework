@@ -14,10 +14,10 @@ class CombatService
      */
     public function calculateAttackResult(array $data) : int
     {
-        $hasDuaPhep = Arr::get($data, 'dua_phep', 0);
-        $hasQuanSu = Arr::get($data, 'quan_su', 0);
-        $hasChiaKhoa = Arr::get($data, 'chia_khoa', 0);
-        $hasKiemAnhSang = Arr::get($data, 'kiem_anh_sang', 0);
+        $hasDuaPhep = Arr::get($data, 'dua_phep');
+        $hasQuanSu = Arr::get($data, 'quan_su');
+        $hasChiaKhoa = Arr::get($data, 'chia_khoa');
+        $hasKiemAnhSang = Arr::get($data, 'kiem_anh_sang');
 
         $status = Combat::ROOM_NOT_FOUND;
         if ($hasDuaPhep || $hasQuanSu) {

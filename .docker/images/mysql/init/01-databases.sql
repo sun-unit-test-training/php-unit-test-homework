@@ -8,4 +8,4 @@ CREATE USER 'laravel'@'%' IDENTIFIED BY 'secret';
 GRANT ALL ON laravel.* TO 'laravel'@'%';
 
 CREATE USER 'laravel_test'@'%' IDENTIFIED BY 'secret';
-GRANT ALL ON laravel_test.* TO 'laravel_test'@'%';
+GRANT ALL ON `laravel_test%`.* TO 'laravel_test'@'%';

@@ -3,8 +3,6 @@
 namespace Modules\Exercise09\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
-use Modules\Exercise01\Models\Voucher;
 
 class AttackBossRequest extends FormRequest
 {

@@ -3,7 +3,7 @@
 namespace Modules\Exercise03\Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use Modules\Exercise03\Entities\Product;
+use Modules\Exercise03\Models\Product;
 
 class Exercise03DatabaseSeeder extends Seeder
 {
@@ -14,15 +14,15 @@ class Exercise03DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        factory(Product::class)->state('cravat')->create([
+        Product::factory()->cravat()->create([
             'name' => 'Cà vạt',
             'thumbnail' => 'images/exercise03/cravat.jpg',
         ]);
-        factory(Product::class)->state('white_shirt')->create([
+        Product::factory()->whiteShirt()->create([
             'name' => 'Sơ mi trắng',
             'thumbnail' => 'images/exercise03/white_shirt.jpg',
         ]);
-        factory(Product::class)->state('other')->create([
+        Product::factory()->other()->create([
             'name' => 'Loại khác',
             'thumbnail' => 'images/exercise03/default.jpg',
         ]);

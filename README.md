@@ -1,6 +1,4 @@
 # PHP unit test training
-**NOTE**: this is ***beginner*** course, so we try to implement it in simple way.
-- Write Feature Test
 
 ## Setup
 ```sh
@@ -9,6 +7,8 @@ docker-compose up -d
 docker-compose exec php composer install
 docker-compose exec php chmod -R 777 storage bootstrap/cache
 docker-compose exec php php artisan key:generate
+docker-compose exec php php artisan migrate
+docker-compose exec php php artisan module:seed Exercise03
 ```
 
 ## Guide
@@ -17,6 +17,9 @@ To prevent conflict, each exercise is organized in its own folder with the help 
 Start implementing and writing unit tests for each exercise.
 
 ## Run phpunit
+```sh
+cp .env.testing.example .env.testing
+```
 
 Run all:
 ```sh
@@ -39,3 +42,19 @@ Run only one module (see testsuites in `phpunit.xml`)
 ```
 
 **NOTE**: You can edit file `./phpunit.sh` to use other phpunit code coverage driver. `pcov` or `phpdbg` can generate code coverage much faster than `xdebug`. Please try!
+
+## Run infection
+Run all:
+```sh
+./infection.sh
+```
+
+Run only one module:
+```sh
+./infection.sh --filter=Exercise01
+```
+
+Run only one file:
+```sh
+./infection.sh --filter=Modules/Exercise01/Http/Controllers/OrderController.php
+```
