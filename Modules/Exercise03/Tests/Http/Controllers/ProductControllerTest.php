@@ -1,5 +1,5 @@
 <?php
-namespace Modules\Exercise03\Tests\Http\Requests;
+namespace Modules\Exercise03\Tests\Http\Controllers;
 
 use Mockery;
 use Tests\TestCase;
