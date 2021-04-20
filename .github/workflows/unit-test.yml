@@ -5,8 +5,9 @@ on:
     branches: [master]
 
 jobs:
-  unit-tests:
+  phpunit-c0:
     runs-on: ubuntu-latest
+    name: PHPUnit Line Coverage (C0)
 
     services:
       mysql:
@@ -62,11 +63,133 @@ jobs:
           chmod -R 777 storage bootstrap/cache
           php artisan migrate --env=testing
 
-      - name: PHPUnit
+      - name: PHPUnit with Line Coverage
         env:
           DB_HOST: 127.0.0.1
           DB_PORT: ${{ job.services.mysql.ports[3306] }}
         run: vendor/bin/phpunit --coverage-text
+
+  phpunit-c1-2:
+    runs-on: ubuntu-latest
+    name: PHPUnit Branch / Path Coverage (C1, C2)
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: laravel_test
+          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: laravel_test
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 33066:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP with PCOV
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          coverage: xdebug
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Verify MySQL connection
+        env:
+          PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
+            sleep 1
+          done
+
+      - name: Prepare for test
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          cp .env.testing.example .env.testing
+          chmod -R 777 storage bootstrap/cache
+          php artisan migrate --env=testing
+          sed -i 's/<coverage processUncoveredFiles="true">/<coverage processUncoveredFiles="true" pathCoverage="true">/' phpunit.xml
+
+      - name: PHPUnit with Path Coverage
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: vendor/bin/phpunit --coverage-text
+
+  infection:
+    runs-on: ubuntu-latest
+    name: Mutation Testing With Infection
+
+    services:
+      mysql:
+        image: mysql:5.7
+        env:
+          MYSQL_USER: laravel_test
+          MYSQL_PASSWORD: secret
+          MYSQL_DATABASE: laravel_test
+          MYSQL_ROOT_PASSWORD: secret
+        ports:
+          - 33066:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP with PCOV
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "7.4"
+          ini-values: pcov.directory=.,pcov.exclude=~(config|database|node_modules|public|resources|routes|storage|tests|vendor|Config|Database|Resources|Routes|Tests|Providers)~
+          coverage: pcov
+
+      - name: Get composer cache directory
+        id: composer-cache
+        run: echo "::set-output name=dir::$(composer config cache-files-dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+          restore-keys: ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer install --no-interaction
+
+      - name: Verify MySQL connection
+        env:
+          PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
+            sleep 1
+          done
+
+      - name: Prepare for test
+        env:
+          DB_HOST: 127.0.0.1
+          DB_PORT: ${{ job.services.mysql.ports[3306] }}
+        run: |
+          cp .env.testing.example .env.testing
+          chmod -R 777 storage bootstrap/cache
+          php artisan migrate --env=testing
 
       - name: Infection
         env:
