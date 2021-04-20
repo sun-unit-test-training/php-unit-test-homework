@@ -24,6 +24,7 @@ class ProductFactory extends Factory
         return [
             'name' => $this->faker->name,
             'thumbnail' => $this->faker->image(),
+            'type' => $this->cravat(),
         ];
     }
 
