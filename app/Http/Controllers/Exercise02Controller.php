@@ -1,91 +1,46 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace Modules\Exercise02\Http\Controllers;
 
-use Illuminate\Support\Carbon;
+use Modules\Exercise02\Http\Requests\ATMRequest;
+use Modules\Exercise02\Services\ATMService;
+use Illuminate\Contracts\Support\Renderable;
+use Illuminate\Routing\Controller;
 
 class Exercise02Controller extends Controller
 {
-    const NORMAL_FREE = 110;
-    const FREE = 0;
-    const TIME_PERIOD = ['08:45', '17:59'];
-    //example default holiday
-    const HOLIDAYS = ['01-01', '01-05', '02-09'];
+    protected $atmService;
 
-    /**
-     * charge ATM
-     *
-     * @param bool $isVip
-     * @param string $date
-     * @param string $time
-     * @return int
-     */
-    public function chargeATM($isVip = true, $date = '2021-05-01', $time = '14:25'): int
+    public function __construct(ATMService $atmService)
     {
-        //rule1
-        if ($isVip) {
-            return self::FREE;
-        }
-        //rule2
-        if($this->isWeekend($date) || $this->isHoliday($date)) {
-            return self::NORMAL_FREE;
-        }
-        //rule3
-        if ($this->isTimeDiscount($date, $time)) {
-            return self::FREE;
-        }
-        //rule4
-        return self::NORMAL_FREE;
+        $this->atmService = $atmService;
+    }
+
+    public function index()
+    {
+        return view('exercise02::index', [
+            'normalFee' => $this->atmService::NORMAL_FEE,
+            'noFee' => $this->atmService::NO_FEE,
+            'timePeriod1' => $this->atmService::TIME_PERIOD_1,
+            'timePeriod2' => $this->atmService::TIME_PERIOD_2,
+            'timePeriod3' => $this->atmService::TIME_PERIOD_3,
+        ]);
     }
 
     /**
-     * Check is weekend
+     * Display a listing of the resource
      *
-     * @param $date
-     * @return bool
+     * @return Renderable
      */
-    public function isWeekend($date): bool
+    public function takeATMFee(ATMRequest $request)
     {
-        if (Carbon::createFromFormat('Y-m-d', $date)->isWeekend()) {
-            return true;
-        }
+        $inputs = $request->validated();
+        $fee = $this->atmService->calculate($inputs['card_id']);
 
-        return false;
-    }
-
-    /**
-     * Check is holiday
-     *
-     * @param $date
-     * @return bool
-     */
-    public function isHoliday($date): bool
-    {
-        $date = Carbon::createFromFormat('Y-m-d', $date);
-        if (in_array($date->format('d-m'), self::HOLIDAYS)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    /**
-     * Check is time discount
-     *
-     * @param $date
-     * @param $time
-     * @return bool
-     */
-    public function isTimeDiscount($date, $time): bool
-    {
-        $date = Carbon::createFromFormat('Y-m-d H:i', $date . " " . $time);
-        $time = $date->format('H:i');
-        list($minTime, $maxTime) = self::TIME_PERIOD;
-
-        if ($time >= $minTime && $time <= $maxTime) {
-            return true;
-        }
-
-        return false;
+        return back()
+            ->withInput()
+            ->with('calculate', [
+                'fee' => $fee,
+            ]);
     }
 }
