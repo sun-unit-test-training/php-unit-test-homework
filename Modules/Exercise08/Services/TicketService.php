@@ -32,7 +32,7 @@ class TicketService
         }
 
         if ($input['age'] < 13) {
-            return self::BASE_PRICE*0.5;
+            return self::BASE_PRICE * 0.5;
         }
 
         if ($dayOfWeek == 3) {
