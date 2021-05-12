@@ -2,10 +2,10 @@
 
 namespace Modules\Exercise02\Http\Controllers;
 
-use Modules\Exercise02\Http\Requests\ATMRequest;
-use Modules\Exercise02\Services\ATMService;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controller;
+use Modules\Exercise02\Http\Requests\ATMRequest;
+use Modules\Exercise02\Services\ATMService;
 
 class Exercise02Controller extends Controller
 {
@@ -19,11 +19,11 @@ class Exercise02Controller extends Controller
     public function index()
     {
         return view('exercise02::index', [
-            'normalFee' => $this->atmService::NORMAL_FEE,
-            'noFee' => $this->atmService::NO_FEE,
-            'timePeriod1' => $this->atmService::TIME_PERIOD_1,
-            'timePeriod2' => $this->atmService::TIME_PERIOD_2,
-            'timePeriod3' => $this->atmService::TIME_PERIOD_3,
+            'normalFee' => ATMService::NORMAL_FEE,
+            'noFee' => ATMService::NO_FEE,
+            'timePeriod1' => ATMService::TIME_PERIOD_1,
+            'timePeriod2' => ATMService::TIME_PERIOD_2,
+            'timePeriod3' => ATMService::TIME_PERIOD_3,
         ]);
     }
 
@@ -37,8 +37,7 @@ class Exercise02Controller extends Controller
         $inputs = $request->validated();
         $fee = $this->atmService->calculate($inputs['card_id']);
 
-        return back()
-            ->withInput()
+        return back()->withInput()
             ->with('calculate', [
                 'fee' => $fee,
             ]);

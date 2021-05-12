@@ -3,9 +3,8 @@
 namespace Modules\Exercise03\Http\Controllers;
 
 use Illuminate\Routing\Controller;
-use Modules\Exercise03\Services\ProductService;
 use Modules\Exercise03\Http\Requests\CheckoutRequest;
-use Modules\Exercise03\Repositories\ProductRepository;
+use Modules\Exercise03\Services\ProductService;
 
 /**
  * Class ProductController
