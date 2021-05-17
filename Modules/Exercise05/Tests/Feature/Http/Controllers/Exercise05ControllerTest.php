@@ -47,7 +47,7 @@ class Exercise05ControllerTest extends TestCase
             'discount_pizza' => 'Khuyến mại pizza thứ 2',
             'discount_potato' => null,
         ];
-    
+
         $url = action([Exercise05Controller::class, 'store']);
 
         $this->orderServiceMock

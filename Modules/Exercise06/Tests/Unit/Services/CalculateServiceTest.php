@@ -23,7 +23,7 @@ class CalculateServiceTest extends TestCase
     public function test_calculate($input, $time)
     {
         $result = $this->service->calculate($input['bill'], $input['hasWatch']);
-    
+
         $this->assertEquals($time, $result);
     }
 

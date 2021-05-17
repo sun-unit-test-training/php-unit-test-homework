@@ -11,7 +11,7 @@ class ProductTest extends TestCase
     function test_create_new_factory()
     {
         $product = Product::newFactory();
-        
+
         $this->assertInstanceOf(ProductFactory::class, $product);
     }
 }

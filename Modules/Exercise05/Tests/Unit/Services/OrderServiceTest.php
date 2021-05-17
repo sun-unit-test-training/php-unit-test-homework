@@ -22,7 +22,7 @@ class OrderServiceTest extends TestCase
     public function test_handle_discount($detailOrder, $discount)
     {
         $result = $this->service->handleDiscount($detailOrder);
-    
+
         $this->assertEquals($discount, $result);
     }
 

@@ -4,20 +4,19 @@ namespace Modules\Exercise07\Tests\Feature\Http\Requests;
 
 use Tests\TestCase;
 use Illuminate\Support\Facades\Validator;
-use Modules\Exercise06\Http\Requests\Exercise06Request;
+use Modules\Exercise07\Http\Requests\CheckoutRequest;
 use Tests\SetupDatabaseTrait;
 
-class Exercise06RequestTest extends TestCase
+class CheckoutRequestTest extends TestCase
 {
     use SetupDatabaseTrait;
 
     public function test_it_contain_default_rules()
     {
-        $request = new Exercise06Request();
+        $request = new CheckoutRequest();
 
         $this->assertEquals([
-            'bill' => 'required|integer|min:0',
-            'has_watch' => 'nullable|boolean',
+            'amount' => ['required', 'integer', 'min:1'],
         ], $request->rules());
     }
 
@@ -26,11 +25,10 @@ class Exercise06RequestTest extends TestCase
      */
     public function test_validation_fails_when_data_wrong($input)
     {
-        $request = new Exercise06Request();
+        $request = new CheckoutRequest();
 
         $validator = Validator::make([
-            'bill' => $input['bill'],
-            'has_watch' => $input['has_watch'],
+            'amount' => $input['amount'],
         ], $request->rules());
 
         $this->assertTrue($validator->fails());
@@ -41,43 +39,32 @@ class Exercise06RequestTest extends TestCase
         return [
             [
                 [
-                    'bill' => null,
-                    'has_watch' => null,
+                    'amount' => null,
                 ]
             ],
             [
                 [
-                    'bill' => 5.5,
-                    'has_watch' => null,
-                ],
+                    'amount' => 0,
+                ]
             ],
             [
                 [
-                    'bill' => -1,
-                    'has_watch' => null
-                ],
+                    'amount' => 0.5,
+                ]
             ],
             [
                 [
-                    'bill' => 10,
-                    'has_watch' => 10
-                ],
-            ],
-            [
-                [
-                    'bill' => 5.5,
-                    'has_watch' => 10
-                ],
+                    'amount' => 10.5,
+                ]
             ],
         ];
     }
 
     public function test_validation_success()
     {
-        $request = new Exercise06Request();
+        $request = new CheckoutRequest();
         $validator = Validator::make([
-            'bill' => 10,
-            'has_watch' => true,
+            'amount' => 10,
         ], $request->rules());
 
         $this->assertTrue($validator->passes());

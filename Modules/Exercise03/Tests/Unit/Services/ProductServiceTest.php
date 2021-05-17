@@ -30,7 +30,7 @@ class ProductServiceTest extends TestCase
     public function test_calculate_discount($totalProducts, $discount)
     {
         $result = $this->service->calculateDiscount($totalProducts);
-    
+
         $this->assertEquals($result, $discount);
     }
 
@@ -111,10 +111,10 @@ class ProductServiceTest extends TestCase
         return [
             [
                 [
-                   1 => -5,
-                   2 => 5,
-                   3 => 5,
-               ]
+                    1 => -5,
+                    2 => 5,
+                    3 => 5,
+                ]
             ],
             [
                 [
@@ -122,7 +122,7 @@ class ProductServiceTest extends TestCase
                     2 => -5,
                     3 => 5,
                 ]
-                
+
             ],
             [
                 [

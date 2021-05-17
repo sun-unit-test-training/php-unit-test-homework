@@ -45,11 +45,11 @@ class Exercise06ControllerTest extends TestCase
         ];
 
         $url = action([Exercise06Controller::class, 'calculate']);
-        
+
         $this->calculateMock
-                ->shouldReceive('calculate')
-                ->with($input['bill'], $input['has_watch'])
-                ->andReturn(240);
+            ->shouldReceive('calculate')
+            ->with($input['bill'], $input['has_watch'])
+            ->andReturn(240);
 
         $response = $this->post($url, $input);
 
