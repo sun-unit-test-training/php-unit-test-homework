@@ -4,7 +4,8 @@
             "Modules/Exercise03/",
             "Modules/Exercise04/",
             "Modules/Exercise05/",
-            "Modules/Exercise07/"
+            "Modules/Exercise07/",
+            "Modules/Exercise06/"
         ],
         "excludes": [
             "Config",
