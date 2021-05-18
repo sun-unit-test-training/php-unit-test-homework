@@ -6,9 +6,7 @@
 >
     <testsuites>
         <testsuite name="All">
-            <directory suffix="Test.php">./tests/Unit</directory>
-            <directory suffix="Test.php">./tests/Feature</directory>
-            <directory suffix="Test.php">./Modules/**/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise03/Tests</directory>
         </testsuite>
         <testsuite name="Exercise01">
             <directory suffix="Test.php">./Modules/Exercise01/Tests</directory>
@@ -43,8 +41,7 @@
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">./app</directory>
-            <directory suffix=".php">./Modules</directory>
+            <directory suffix=".php">./Modules/Exercise03</directory>
         </include>
         <exclude>
             <directory>./Modules/**/Config</directory>
