@@ -1,9 +1,7 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit\Http\Requests;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Validator;
 use Modules\Exercise05\Http\Requests\OrderRequest;
 use Tests\TestCase;

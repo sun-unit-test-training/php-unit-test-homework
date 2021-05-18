@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers;
 
 use Modules\Exercise04\Http\Controllers\CalendarController;
 use Modules\Exercise04\Services\CalendarService;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers;
 
 use Illuminate\Http\RedirectResponse;
 use Modules\Exercise06\Http\Controllers\Exercise06Controller;

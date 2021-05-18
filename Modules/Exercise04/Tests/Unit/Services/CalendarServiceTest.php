@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Services;
 
 use Carbon\Carbon;
 use Modules\Exercise04\Services\CalendarService;

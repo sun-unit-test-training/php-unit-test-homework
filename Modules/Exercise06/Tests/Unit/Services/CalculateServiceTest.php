@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit\Services;
 
 use Modules\Exercise06\Services\CalculateService;
 use Tests\TestCase;

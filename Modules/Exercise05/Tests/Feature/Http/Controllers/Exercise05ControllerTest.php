@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Http\Controllers;
 
 use Modules\Exercise05\Http\Controllers\Exercise05Controller;
 use Modules\Exercise05\Http\Requests\OrderRequest;

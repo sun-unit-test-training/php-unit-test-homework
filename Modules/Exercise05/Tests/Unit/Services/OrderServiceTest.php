@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Unit;
+namespace Tests\Unit\Services;
 
 use Modules\Exercise05\Services\OrderService;
 use Tests\TestCase;
