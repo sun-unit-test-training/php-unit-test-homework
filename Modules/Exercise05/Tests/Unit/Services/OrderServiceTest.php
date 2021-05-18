@@ -3,6 +3,7 @@
 namespace Tests\Unit\Services;
 
 use Carbon\Carbon;
+use InvalidArgumentException;
 use Modules\Exercise04\Services\CalendarService;
 use Tests\TestCase;
 
