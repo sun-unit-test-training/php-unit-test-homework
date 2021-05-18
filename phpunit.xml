@@ -9,6 +9,7 @@
             <directory suffix="Test.php">./Modules/Exercise03/Tests</directory>
             <directory suffix="Test.php">./Modules/Exercise04/Tests</directory>
             <directory suffix="Test.php">./Modules/Exercise05/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise07/Tests</directory>
         </testsuite>
         <testsuite name="Exercise01">
             <directory suffix="Test.php">./Modules/Exercise01/Tests</directory>
@@ -46,6 +47,7 @@
             <directory suffix=".php">./Modules/Exercise03</directory>
             <directory suffix=".php">./Modules/Exercise04</directory>
             <directory suffix=".php">./Modules/Exercise05</directory>
+            <directory suffix=".php">./Modules/Exercise07</directory>
         </include>
         <exclude>
             <directory>./Modules/**/Config</directory>
