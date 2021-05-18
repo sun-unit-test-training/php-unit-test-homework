@@ -149,6 +149,6 @@ class ProductServiceTest extends TestCase
 
         $products = $this->service->getAllProducts();
 
-        $this->assertEquals($products->count(), 6);
+        $this->assertEquals($products->count(), 3);
     }
 }

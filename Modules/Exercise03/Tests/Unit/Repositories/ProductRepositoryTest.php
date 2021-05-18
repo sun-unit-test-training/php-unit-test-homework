@@ -25,10 +25,16 @@ class ProductRepositoryTest extends TestCase
 
     public function test_all()
     {
-        $collection = $this->repository->all();
+        Product::factory()->cravat()->create([
+            'name' => 'Cà vạt',
+            'thumbnail' => 'images/exercise03/cravat.jpg',
+        ]);
 
-        $products = $collection->all();
+        $product = new Product();
+        $productRepository = new ProductRepository($product);
 
-        $this->assertEquals(count($products), 3);
+        $products = $productRepository->all();
+
+        $this->assertEquals($products->count(), 1);
     }
 }
