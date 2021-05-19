@@ -1,25 +1,26 @@
 <?php
 
-namespace Modules\Exercise05\Tests\Feature\Http\Controllers;
+namespace Modules\Exercise06\Tests\Feature\Http\Controllers;
 
-use Illuminate\View\View;
-use Modules\Exercise05\Http\Controllers\Exercise05Controller;
-use Modules\Exercise05\Http\Requests\OrderRequest;
-use Modules\Exercise05\Services\OrderService;
+use Illuminate\Http\RedirectResponse;
+use Mockery\MockInterface;
+use Modules\Exercise06\Http\Controllers\Exercise06Controller;
+use Modules\Exercise06\Http\Requests\Exercise06Request;
+use Modules\Exercise06\Services\CalculateService;
 use Tests\TestCase;
 
-class Exercise05ControllerTest extends TestCase
+class Exercise06ControllerTest extends TestCase
 {
     /**
-     * @var \Mockery\MockInterface
+     * @var MockInterface
      */
-    protected $orderServiceMock;
+    protected $calculateServiceMock;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->orderServiceMock = $this->mock(OrderService::class);
+        $this->calculateServiceMock = $this->mock(CalculateService::class);
     }
 
     /**
@@ -29,45 +30,44 @@ class Exercise05ControllerTest extends TestCase
      */
     public function test__contruct()
     {
-        $controller = new Exercise05Controller($this->orderServiceMock);
+        $controller = new Exercise06Controller($this->calculateServiceMock);
 
-        $this->assertInstanceOf(Exercise05Controller::class, $controller);
+        $this->assertInstanceOf(Exercise06Controller::class, $controller);
     }
 
     public function test_index()
     {
-        $url = action([Exercise05Controller::class, 'index']);
+        $url = action([Exercise06Controller::class, 'index']);
 
         $response = $this->get($url);
 
-        $response->assertViewIs('exercise05::index');
+        $response->assertViewIs('exercise06::index');
         $response->assertViewHasAll([
-            'optionReceives',
-            'optionCoupons',
+            'case1',
+            'case2',
+            'freeTimeForMovie',
         ]);
     }
 
-    public function test_store()
+    public function test_calculate()
     {
         $input = [
-            'price' => 99,
-            'option_receive' => 1,
-            'option_coupon' => 1,
+            'bill' => 99,
+            'has_watch' => true,
         ];
 
-        $request = $this->mock(OrderRequest::class);
-        $request->shouldReceive('only')
+        $request = $this->mock(Exercise06Request::class);
+        $request->shouldReceive('validated')
             ->once()
-            ->with('price', 'option_receive', 'option_coupon')
             ->andReturn($input);
 
-        $this->orderServiceMock->shouldReceive('handleDiscount')
-            ->with($input)
+        $this->calculateServiceMock->shouldReceive('calculate')
+            ->with($input['bill'], $input['has_watch'])
             ->once()
-            ->andReturn([]);
+            ->andReturn(180);
 
-        $controller = new Exercise05Controller($this->orderServiceMock);
+        $controller = new Exercise06Controller($this->calculateServiceMock);
 
-        $this->assertInstanceOf(View::class, $controller->store($request));
+        $this->assertInstanceOf(RedirectResponse::class, $controller->calculate($request));
     }
 }
