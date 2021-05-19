@@ -1,13 +1,13 @@
 <?php
 
-namespace Modules\Exercise05\Tests\Feature\Http\Requests;
+namespace Modules\Exercise06\Tests\Feature\Http\Requests;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 use Modules\Exercise05\Http\Requests\OrderRequest;
 use Tests\TestCase;
 
-class OrderRequestTest extends TestCase
+class Exercise06Request extends TestCase
 {
     public function test_rules()
     {

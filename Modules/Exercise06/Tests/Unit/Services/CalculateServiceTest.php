@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Exercise05\Tests\Unit\Services;
+namespace Modules\Exercise06\Tests\Unit\Services;
 
 use Modules\Exercise05\Services\OrderService;
 use Tests\TestCase;
@@ -23,8 +23,10 @@ class OrderServiceTest extends TestCase
      * */
     public function test_handle_discount($detailOrder, $expectedValue)
     {
-        $resultOrder = $this->orderService->handleDiscount($detailOrder);
-        $this->assertEquals($expectedValue, $resultOrder);
+        $holidays = ['2021-05-19'];
+
+        $class = $this->orderService->handleDiscount($detailOrder);
+        $this->assertEquals($expectedValue, $class);
     }
 
     public function provideDetailOrder()
