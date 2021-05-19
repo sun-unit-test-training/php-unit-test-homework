@@ -43,8 +43,11 @@
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">./app</directory>
-            <directory suffix=".php">./Modules</directory>
+            <directory suffix=".php">./Modules/Exercise01</directory>
+            <directory suffix=".php">./Modules/Exercise03</directory>
+            <directory suffix=".php">./Modules/Exercise04</directory>
+            <directory suffix=".php">./Modules/Exercise05</directory>
+            <directory suffix=".php">./Modules/Exercise07</directory>
         </include>
         <exclude>
             <directory>./Modules/**/Config</directory>
