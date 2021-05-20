@@ -1,7 +1,14 @@
 {
     "source": {
         "directories": [
-            "Modules/"
+            "Modules/Exercise03/",
+            "Modules/Exercise04/",
+            "Modules/Exercise05/",
+            "Modules/Exercise06/",
+            "Modules/Exercise07/",
+            "Modules/Exercise08/",
+            "Modules/Exercise09/",
+            "Modules/Exercise10/"
         ],
         "excludes": [
             "Config",

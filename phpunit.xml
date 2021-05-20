@@ -6,9 +6,14 @@
 >
     <testsuites>
         <testsuite name="All">
-            <directory suffix="Test.php">./tests/Unit</directory>
-            <directory suffix="Test.php">./tests/Feature</directory>
-            <directory suffix="Test.php">./Modules/**/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise03/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise04/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise05/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise06/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise07/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise08/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise09/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise10/Tests</directory>
         </testsuite>
         <testsuite name="Exercise01">
             <directory suffix="Test.php">./Modules/Exercise01/Tests</directory>
@@ -43,8 +48,14 @@
     </testsuites>
     <coverage processUncoveredFiles="true">
         <include>
-            <directory suffix=".php">./app</directory>
-            <directory suffix=".php">./Modules</directory>
+            <directory suffix=".php">./Modules/Exercise03</directory>
+            <directory suffix=".php">./Modules/Exercise04</directory>
+            <directory suffix=".php">./Modules/Exercise05</directory>
+            <directory suffix=".php">./Modules/Exercise06</directory>
+            <directory suffix=".php">./Modules/Exercise07</directory>
+            <directory suffix=".php">./Modules/Exercise08</directory>
+            <directory suffix=".php">./Modules/Exercise09</directory>
+            <directory suffix=".php">./Modules/Exercise010</directory>
         </include>
         <exclude>
             <directory>./Modules/**/Config</directory>
