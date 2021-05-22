@@ -3,7 +3,8 @@
         "directories": [
             "Modules/Exercise04/",
             "Modules/Exercise05/",
-            "Modules/Exercise06/"
+            "Modules/Exercise06/",
+            "Modules/Exercise07/"
         ],
         "excludes": [
             "Config",
