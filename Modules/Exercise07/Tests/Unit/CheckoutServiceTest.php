@@ -29,7 +29,23 @@ class CheckoutServiceTest extends TestCase
             ],
             [
                 [
+                    'amount' => 5000,
+                    'premium_member' => true,
+                    'shipping_express' => '',
+                    'shipping_fee' => 0,
+                ],
+            ],
+            [
+                [
                     'amount' => 6000,
+                    'premium_member' => '',
+                    'shipping_express' => '',
+                    'shipping_fee' => 0,
+                ],
+            ],
+            [
+                [
+                    'amount' => 5000,
                     'premium_member' => '',
                     'shipping_express' => '',
                     'shipping_fee' => 0,

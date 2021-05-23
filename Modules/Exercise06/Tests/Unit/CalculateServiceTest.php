@@ -16,21 +16,36 @@ class CalculateServiceTest extends TestCase
         $this->calculateService = new CalculateService();
     }
 
-    public function test_exception_when_bill_lessthan_or_equal_zero()
+    public function providerBillLteqZero()
+    {
+        return [
+            [0],
+            [-100],
+        ];
+    }
+
+    /**
+     * @dataProvider providerBillLteqZero
+     */
+    public function test_exception_when_bill_lessthan_or_equal_zero($bill)
     {
         $this->expectException(InvalidArgumentException::class);
 
-        $this->calculateService->calculate(0);
+        $this->calculateService->calculate($bill);
     }
 
     public function providerValidData()
     {
         return [
             [6000, false, 120],
+            [5000, false, 120],
             [4000, false, 60],
+            [2000, false, 60],
             [1000, false, 0],
             [6000, true, 300],
+            [5000, true, 300],
             [4000, true, 240],
+            [2000, true, 240],
             [1000, true, 180],
         ];
     }
