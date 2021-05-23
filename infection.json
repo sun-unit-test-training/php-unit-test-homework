@@ -1,11 +1,11 @@
 {
     "source": {
         "directories": [
+            "Modules/Exercise04/",
             "Modules/Exercise06/",
             "Modules/Exercise07/",
             "Modules/Exercise08/",
-            "Modules/Exercise09/",
-            "Modules/Exercise10/"
+            "Modules/Exercise09/"
         ],
         "excludes": [
             "Config",
