@@ -6,9 +6,7 @@
 >
     <testsuites>
         <testsuite name="All">
-            <directory suffix="Test.php">./tests/Unit</directory>
-            <directory suffix="Test.php">./tests/Feature</directory>
-            <directory suffix="Test.php">./Modules/**/Tests</directory>
+            <directory suffix="Test.php">./Modules/Exercise03/Tests</directory>
         </testsuite>
         <testsuite name="Exercise01">
             <directory suffix="Test.php">./Modules/Exercise01/Tests</directory>
@@ -47,12 +45,7 @@
             <directory suffix=".php">./Modules</directory>
         </include>
         <exclude>
-            <directory>./Modules/**/Config</directory>
-            <directory>./Modules/**/Database</directory>
-            <directory>./Modules/**/Resources</directory>
-            <directory>./Modules/**/Routes</directory>
-            <directory>./Modules/**/Tests</directory>
-            <directory>./Modules/**/Providers</directory>
+            <directory suffix="Test.php">./Modules/Exercise03/Tests</directory>
         </exclude>
     </coverage>
     <php>
