@@ -27,7 +27,10 @@ class CalculateServiceTest extends TestCase
     /**
      * @param $input
      * @param $expected
-     * @dataProvider calculate_input_data
+     * @dataProvider billGreateThanMinBill1
+     * @dataProvider billGreateThanMinBill2
+     * @dataProvider billLessThanMinBill
+     * @dataProvider hasWatch
      */
     public function test_calculate_function($input, $expected)
     {
@@ -36,7 +39,33 @@ class CalculateServiceTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function calculate_input_data()
+    public function billGreateThanMinBill1()
+    {
+        return [
+            [
+                [
+                    'bill' => 2001,
+                    'hasWatch' => false,
+                ],
+                60
+            ],
+        ];
+    }
+
+    public function billGreateThanMinBill2()
+    {
+        return [
+            [
+                [
+                    'bill' => 5001,
+                    'hasWatch' => false,
+                ],
+                120
+            ],
+        ];
+    }
+
+    public function billLessThanMinBill()
     {
         return [
             [
@@ -46,19 +75,18 @@ class CalculateServiceTest extends TestCase
                 ],
                 0
             ],
+        ];
+    }
+
+    public function hasWatch()
+    {
+        return [
             [
                 [
-                    'bill' => 5001,
-                    'hasWatch' => false,
+                    'bill' => 1,
+                    'hasWatch' => true,
                 ],
-                120
-            ],
-            [
-                [
-                    'bill' => 2001,
-                    'hasWatch' => false,
-                ],
-                60
+                180
             ],
         ];
     }

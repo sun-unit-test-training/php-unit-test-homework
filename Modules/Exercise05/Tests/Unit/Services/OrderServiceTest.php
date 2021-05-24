@@ -10,7 +10,9 @@ class OrderServiceTest extends TestCase
     /**
      * @param $input
      * @param $expected
-     * @dataProvider handle_discount_data
+     * @dataProvider donotReceiveAtHomeAndHaveCoupon
+     * @dataProvider receiveAtHomeAndNoCoupon
+     * @dataProvider priceLessThanDiscountPotato
      */
     public function test_handle_discount_function($input, $expected)
     {
@@ -20,7 +22,7 @@ class OrderServiceTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function handle_discount_data()
+    public function donotReceiveAtHomeAndHaveCoupon()
     {
         return [
             [
@@ -35,6 +37,12 @@ class OrderServiceTest extends TestCase
                     'discount_pizza' => 'Khuyến mại pizza thứ 2'
                 ]
             ],
+        ];
+    }
+
+    public function receiveAtHomeAndNoCoupon()
+    {
+        return [
             [
                 [
                     'price' => '2000',
@@ -44,6 +52,24 @@ class OrderServiceTest extends TestCase
                 [
                     'price' => '1600',
                     'discount_potato' => 'Miễn phí khoai tây',
+                    'discount_pizza' => null
+                ]
+            ]
+        ];
+    }
+
+    public function priceLessThanDiscountPotato()
+    {
+        return [
+            [
+                [
+                    'price' => '1000',
+                    'option_receive' => 2,
+                    'option_coupon' => 1
+                ],
+                [
+                    'price' => '800',
+                    'discount_potato' => null,
                     'discount_pizza' => null
                 ]
             ]

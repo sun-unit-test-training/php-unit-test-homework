@@ -11,19 +11,27 @@ use Mockery\MockInterface;
 
 class ProductControllerTest extends TestCase
 {
+    protected $productServiceMock;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // Laravel helper: mock and bind to service container
+        $this->productServiceMock = $this->mock(ProductService::class);
+    }
+
     public function test_index_returns_view()
     {
-        $productService = $this->mock(ProductService::class, function (MockInterface $mock) {
-            $mock->shouldReceive('getAllProducts')
-                ->once()
-                ->andReturn([]);
-        });
+        $this->productServiceMock->shouldReceive('getAllProducts')
+            ->once()
+            ->andReturn([]);
 
-        $controller = new ProductController($productService);
+        $url = action([ProductController::class, 'index']);
+        $response = $this->get($url);
 
-        $view = $controller->index();
-
-        $this->assertEquals('exercise03::index', $view->name());
+        $response->assertViewIs('exercise03::index');
+        $response->assertViewHas('products');
     }
 
     public function test_checkout_when_input_valid()

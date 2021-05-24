@@ -41,4 +41,15 @@ class CalendarServiceTest extends TestCase
 
         $this->assertEquals(CalendarService::COLOR_RED, $result);
     }
+
+    public function test_get_date_class_function_with_day_of_week_input()
+    {
+        // Monday input
+        $date = Carbon::create(2021, 5, 24);
+
+        $calendarService = new CalendarService();
+        $result = $calendarService->getDateClass($date, []);
+
+        $this->assertEquals(CalendarService::COLOR_BLACK, $result);
+    }
 }

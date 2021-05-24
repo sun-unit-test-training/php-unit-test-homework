@@ -10,7 +10,9 @@ class CheckoutServiceTest extends TestCase
     /**
      * @param $input
      * @param $expected
-     * @dataProvider calculate_input_data
+     * @dataProvider amountLessThanFreeShipping
+     * @dataProvider amountGreateThanFreeShippingAndIsPremiumMember
+     * @dataProvider isPremiumMember
      */
     public function test_calculate_shipping_fee_function($input, $expected)
     {
@@ -21,7 +23,7 @@ class CheckoutServiceTest extends TestCase
         $this->assertEquals($expected, $result);
     }
 
-    public function calculate_input_data()
+    public function amountLessThanFreeShipping()
     {
         return [
             [
@@ -33,6 +35,12 @@ class CheckoutServiceTest extends TestCase
                     'shipping_fee' => 500,
                 ]
             ],
+        ];
+    }
+
+    public function isPremiumMember()
+    {
+        return [
             [
                 [
                     'amount' => 10,
@@ -46,6 +54,12 @@ class CheckoutServiceTest extends TestCase
                     'shipping_express' => 1,
                 ]
             ],
+        ];
+    }
+
+    public function amountGreateThanFreeShippingAndIsPremiumMember()
+    {
+        return [
             [
                 [
                     'amount' => 5001,
