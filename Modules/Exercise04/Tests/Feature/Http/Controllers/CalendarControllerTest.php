@@ -16,9 +16,7 @@ class CalendarControllerTest extends TestCase
         parent::setup();
 
         $this->calendarService = $this->mock(CalendarService::class);
-        $this->calendarController = new CalendarController(
-            $this->calendarService
-        );
+        $this->calendarController = new CalendarController($this->calendarService);
     }
     public function test_index_show_calendar_view_success()
     {

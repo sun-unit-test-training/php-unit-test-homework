@@ -17,9 +17,7 @@ class Exercise05ControllerTest extends TestCase
         parent::setup();
 
         $this->orderService = $this->mock(OrderService::class);
-        $this->exercise05Controller = new Exercise05Controller(
-            $this->orderService
-        );
+        $this->exercise05Controller = new Exercise05Controller($this->orderService);
     }
 
     public function test_index_return_view()

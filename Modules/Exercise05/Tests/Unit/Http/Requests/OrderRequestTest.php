@@ -42,6 +42,7 @@ class OrderRequestTest extends TestCase
     public function provider_input_errors()
     {
         return [
+            //invalid price
             [
                 'price',
                 [
@@ -58,6 +59,8 @@ class OrderRequestTest extends TestCase
                     'option_coupon' => 1
                 ]
             ],
+
+            //invalid option_receive
             [
                 'option_receive',
                 [
@@ -66,6 +69,8 @@ class OrderRequestTest extends TestCase
                     'option_coupon' => 1
                 ]
             ],
+
+            //invalid option_coupon
             [
                 'option_coupon',
                 [

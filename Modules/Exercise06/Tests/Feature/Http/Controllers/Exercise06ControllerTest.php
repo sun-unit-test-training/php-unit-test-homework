@@ -18,9 +18,7 @@ class Exercise06ControllerTest extends TestCase
         parent::setup();
 
         $this->calculateService = $this->mock(CalculateService::class);
-        $this->exercise06Controller = new Exercise06Controller(
-            $this->calculateService
-        );
+        $this->exercise06Controller = new Exercise06Controller($this->calculateService);
     }
 
     public function test_index_return_view()

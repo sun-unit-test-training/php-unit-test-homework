@@ -18,9 +18,7 @@ class TicketControllerTest extends TestCase
         parent::setup();
 
         $this->ticketService = $this->mock(TicketService::class);
-        $this->ticketController = new TicketController(
-            $this->ticketService
-        );
+        $this->ticketController = new TicketController($this->ticketService);
     }
 
     public function test_index_show_view()

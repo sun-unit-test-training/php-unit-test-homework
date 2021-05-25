@@ -17,9 +17,7 @@ class ProductControllerTest extends TestCase
         parent::setup();
 
         $this->productService = $this->mock(ProductService::class);
-        $this->productController = new ProductController(
-            $this->productService
-        );
+        $this->productController = new ProductController($this->productService);
     }
 
     public function test_index_return_view_success()

@@ -18,9 +18,7 @@ class ProductServiceTest extends TestCase
         parent::setUp();
 
         $this->productRepository = $this->mock(ProductRepository::class);
-        $this->productService = new ProductService(
-            $this->productRepository
-        );
+        $this->productService = new ProductService($this->productRepository);
     }
 
     public function test_get_all_products_return_data()
