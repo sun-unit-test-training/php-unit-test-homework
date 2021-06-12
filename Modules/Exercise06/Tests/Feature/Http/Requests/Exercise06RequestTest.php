@@ -26,12 +26,12 @@ class Exercise06RequestTest extends TestCase
      * @dataProvider provideWrongBill
      * @dataProvider provideWrongHasWatch
      */
-    public function test_validation_fails_when_input_invalid($key, $value)
+    public function test_validation_fails_when_input_invalid($fieldError, $input)
     {
         $request = new Exercise06Request();
-        $validator = Validator::make($value, $request->rules());
+        $validator = Validator::make($input, $request->rules());
 
-        $this->assertTrue(Arr::exists($validator->errors()->messages(), $key));
+        $this->assertTrue(Arr::exists($validator->errors()->messages(), $fieldError));
     }
 
     function provideWrongBill()

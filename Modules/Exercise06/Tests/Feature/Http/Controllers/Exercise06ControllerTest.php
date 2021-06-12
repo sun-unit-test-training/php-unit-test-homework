@@ -17,7 +17,7 @@ class ProductControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->service = new CalculateService();
+        $this->service = $this->mock(CalculateService::class);;
     }
 
     function test_it_index_return_view()
@@ -39,8 +39,7 @@ class ProductControllerTest extends TestCase
             'has_watch' => 1
         ]);
 
-        $calculateServiceMock = $this->mock(CalculateService::class);
-        $calculateServiceMock->shouldReceive('calculate')
+        $this->service->shouldReceive('calculate')
             ->andReturn(12);
 
         $url = action([Exercise06Controller::class, 'calculate']);

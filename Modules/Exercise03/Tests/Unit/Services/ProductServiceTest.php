@@ -3,7 +3,6 @@
 namespace Modules\Exercise03\Tests\Unit\Services;
 
 use InvalidArgumentException;
-use Modules\Exercise03\Models\Product;
 use Modules\Exercise03\Repositories\ProductRepository;
 use Modules\Exercise03\Services\ProductService;
 use Tests\SetupDatabaseTrait;
@@ -18,20 +17,18 @@ class ProductServiceTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $productRepository = new ProductRepository(new Product());
-        $this->productService = new ProductService($productRepository);
+        $this->productRepository = $this->mock(ProductRepository::class);
+        $this->productService = new ProductService($this->productRepository);
     }
 
     public function test_it_get_all_products()
     {
-
-        $productRepository = $this->mock(ProductRepository::class);
-        $productRepository
+        $this->productRepository
             ->shouldReceive('all')
             ->andReturn([]);
         $products = $this->productService->getAllProducts();
 
-        $this->assertEquals($products->all(), []);
+        $this->assertEquals($products, []);
     }
 
     /**
@@ -49,8 +46,11 @@ class ProductServiceTest extends TestCase
         return [
             'Have Cravat White Shirt & Total Less Than 7' => [5, [1 => 1, 2 => 1, 3 => 1]],
             'Have Cravat White Shirt & Total Equal 7' => [12, [1 => 1, 2 => 1, 3 => 5]],
-            'No Have Both Cravat White Shirt & Total Equal 7' => [7, [1 => 1, 2 => 0, 3 => 6]],
-            'No Have Both Cravat White Shirt & Total Less Than 7' => [0, [1 => 1, 2 => 0, 3 => 3]],
+            'Have Both Cravat White Shirt False & Total Equal 7' => [7, [1 => 1, 2 => 0, 3 => 6]],
+            'Have Both Cravat White Shirt False & Total Less Than 7' => [0, [1 => 1, 2 => 0, 3 => 3]],
+            'Cravat No Exist Or Equal 0' => [0 , [1 => null, 2 => 1, 3 => 1]],
+            'White Shirt No Exist Or Equal 0' => [0, [1 => 1, 2 => null, 3 => 1]],
+            'Others No Exist Or Equal 0' => [5, [1 => 3, 2 => 3, 3 => null]]
         ];
     }
 

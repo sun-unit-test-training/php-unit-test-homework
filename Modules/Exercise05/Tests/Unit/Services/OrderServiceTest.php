@@ -104,6 +104,18 @@ class OrderServiceTest extends TestCase
                     'option_coupon' => 1 //has coupon
                 ]
             ],
+            'Rounded Value of Price To Precision 2' => [
+                [
+                    'price' => 1501.43,
+                    'discount_pizza' => null,
+                    'discount_potato' => 'Miễn phí khoai tây' 
+                ],
+                [
+                    'price' => 1876.78875,
+                    'option_receive' => 2, //at home
+                    'option_coupon' => 1 //has coupon
+                ]
+            ]
         ];
     }
 }

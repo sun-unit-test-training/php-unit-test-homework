@@ -30,7 +30,12 @@ class CalculateServiceTest extends TestCase
      */
     public function test_it_calculate($time, $data)
     {
-        $result = $this->service->calculate($data['bill'], $data['has_watch']);
+        $result = 0;
+        if (isset($data['has_watch'])) {
+            $result = $this->service->calculate($data['bill'], $data['has_watch']);
+        } else {
+            $result = $this->service->calculate($data['bill']);
+        }
 
         $this->assertEquals($result, $time);
     }
@@ -78,6 +83,12 @@ class CalculateServiceTest extends TestCase
                 [
                     'bill' => 1999,
                     'has_watch' => false,
+                ]
+            ],
+            'no pass argument has_watch' => [
+                60,
+                [
+                    'bill' => 2000,
                 ]
             ],
         ];

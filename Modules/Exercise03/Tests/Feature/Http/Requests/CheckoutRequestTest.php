@@ -28,12 +28,12 @@ class ProductRequestTest extends TestCase
      * @dataProvider provideWrongTotalWhiteShirt
      * @dataProvider provideWrongTotalOther
      */
-    public function test_validation_fails_when_input_invalid($key, $value)
+    public function test_validation_fails_when_input_invalid($fieldError, $input)
     {
         $request = new CheckoutRequest();
-        $validator = Validator::make(['total_products' => $value], $request->rules());
+        $validator = Validator::make(['total_products' => $input], $request->rules());
 
-        $this->assertTrue(Arr::exists($validator->errors()->messages(), $key));
+        $this->assertTrue(Arr::exists($validator->errors()->messages(), $fieldError));
     }
 
     function provideWrongTotalProducts()
