@@ -27,7 +27,7 @@ class CalculateServiceTest extends TestCase
      */
     public function test_calculate($input, $expected)
     {
-        $result = $this->calculateService->calculate($input['bill'], $input['hasWatch']);
+        $result = $this->calculateService->calculate($input['bill'], $input['hasWatch'] ?? null);
 
         $this->assertEquals($result, $expected);
     }
@@ -39,6 +39,12 @@ class CalculateServiceTest extends TestCase
         $freeTime = CalculateService::FREE_TIME_FOR_MOVIE;
 
         return [
+            [
+                [
+                    'bill' => $minBill2,
+                ],
+                $freeTime2,
+            ],
             [
                 [
                     'bill' => $minBill2,

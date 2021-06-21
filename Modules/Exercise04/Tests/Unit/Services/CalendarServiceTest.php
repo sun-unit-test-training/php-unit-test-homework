@@ -22,7 +22,7 @@ class CalendarServiceTest extends TestCase
      */
     public function test_get_date_class($date, $class)
     {
-        $response =$this->calendarService->getDateClass($date, ['2021-05-14']);
+        $response = $this->calendarService->getDateClass($date, ['2021-05-14']);
 
         $this->assertEquals($class, $response);
     }
@@ -42,6 +42,20 @@ class CalendarServiceTest extends TestCase
                 Carbon::createFromFormat('Y-m-d', '2021-05-14'),
                 CalendarService::COLOR_RED,
             ],
+            [
+                Carbon::createFromFormat('Y-m-d', '2021-06-21'),
+                CalendarService::COLOR_BLACK,
+            ],
         ];
+    }
+
+    public function test_get_date_class_saturday_is_holiday()
+    {
+        $response = $this->calendarService->getDateClass(
+            Carbon::createFromFormat('Y-m-d', '2021-06-19'),
+            ['2021-06-19']
+        );
+
+        $this->assertEquals(CalendarService::COLOR_RED, $response);
     }
 }

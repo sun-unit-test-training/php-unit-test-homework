@@ -29,7 +29,7 @@ class ProductControllerTest extends TestCase
         $this->assertEquals(compact('products'), $response->getData());
     }
 
-    public function test_checkout_return_view_success()
+    public function test_checkout_return_json_success()
     {
         $discount = 10;
         $paramRequest = [

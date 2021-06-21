@@ -33,24 +33,28 @@ class OrderRequestTest extends TestCase
     function provider_test_validation_fail()
     {
         return [
+            [[]],
             [
-                [],
                 [
                     'price' => '',
                     'option_receive' => '',
                     'option_coupon' => '',
-                ],
+                ]
+            ],
+            [
                 [
                     'price' => null,
                     'option_receive' => null,
                     'option_coupon' => null,
-                ],
+                ]
+            ],
+            [
                 [
                     'price' => 'abc',
                     'option_receive' => 3,
                     'option_coupon' => 3,
-                ],
-            ]
+                ]
+            ],
         ];
     }
 

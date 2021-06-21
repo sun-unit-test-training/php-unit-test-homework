@@ -22,7 +22,7 @@ class ProductServiceTest extends TestCase
 
     public function test_get_all_products()
     {
-        $dataAll = ['abc' => 'def'];
+        $dataAll = ['foo' => 'bar'];
         $this->productRepository->shouldReceive('all')->andReturn($dataAll);
 
         $this->assertEquals($dataAll, $this->productService->getAllProducts());
@@ -55,6 +55,28 @@ class ProductServiceTest extends TestCase
             Product::CRAVAT_TYPE => 2,
             Product::WHITE_SHIRT_TYPE => 2,
             Product::OTHER_TYPE => 10,
+        ]);
+
+        $this->assertEquals($expected, $discount);
+    }
+
+    public function test_calculate_discount_edge_with_shirt_quantity()
+    {
+        $expected = ProductService::CRAVAT_WHITE_SHIRT_DISCOUNT + ProductService::QUANTITY_DISCOUNT;
+        $discount = $this->productService->calculateDiscount([
+            Product::CRAVAT_TYPE => 2,
+            Product::WHITE_SHIRT_TYPE => 2,
+            Product::OTHER_TYPE => 3,
+        ]);
+
+        $this->assertEquals($expected, $discount);
+    }
+
+    public function test_calculate_discount_only_others()
+    {
+        $expected = ProductService::QUANTITY_DISCOUNT;
+        $discount = $this->productService->calculateDiscount([
+            Product::OTHER_TYPE => 9,
         ]);
 
         $this->assertEquals($expected, $discount);

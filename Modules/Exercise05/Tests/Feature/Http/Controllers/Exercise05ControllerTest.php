@@ -32,7 +32,7 @@ class Exercise05ControllerTest extends TestCase
         $this->assertEquals(compact('optionCoupons', 'optionReceives'), $response->getData());
     }
 
-    public function test_store()
+    public function test_store_success()
     {
         $expectedResultOrder = 1;
         $formRequest = [];
