@@ -21,7 +21,6 @@ class CalendarServiceTest extends TestCase
     public function testHandleDiscount($detailOrder, $expectValue)
     {
         $response = $this->orderService->handleDiscount($detailOrder);
-        //print_r($response);
 
         $this->assertEquals($response, $expectValue);
     }

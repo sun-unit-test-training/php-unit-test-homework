@@ -43,6 +43,10 @@ class CalendarServiceTest extends TestCase
                 Carbon::createFromDate(2021, 5, 30),
                 CalendarService::COLOR_RED,
             ],
+            [
+                Carbon::createFromDate(2021, 6, 30),
+                CalendarService::COLOR_BLACK,
+            ],
 
         ];
     }
