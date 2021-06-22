@@ -25,8 +25,8 @@ class CalendarControllerTest extends TestCase
         $day = 0;
         $this->calendarService->shouldReceive('getDateClass')
             ->with(\Mockery::on(function (Carbon $args) use (&$day) {
-                return $args->day === ($day++) && $args->year === 2021 && $args->month === 6;
-            }), ['2021-06-21'])
+                return $args->day === ($day++) && $args->year === 2020 && $args->month === 9;
+            }), ['2020-09-26'])
             ->times(30)->andReturn(1);
         $response = $this->calendarController->index();
 
