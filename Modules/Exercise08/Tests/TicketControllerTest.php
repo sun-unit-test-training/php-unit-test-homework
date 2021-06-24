@@ -35,7 +35,11 @@ class TicketControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertTrue($response->isRedirection());
-        $response->assertSessionHas('data_success');
+        $response->assertSessionHas('data_success.price', 1800);
+        $response->assertSessionHas('data_success.age', 31);
+        $response->assertSessionHas('data_success.booking_date', '2021-01-27');
+        $response->assertSessionHas('data_success.gender', 'super human');
+        $response->assertSessionHas('data_success.name', 'The Thao');
         $response->assertSessionHas('_old_input');
     }
 

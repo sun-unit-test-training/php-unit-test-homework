@@ -4,7 +4,7 @@ namespace Modules\Exercise05\Services;
 
 
 class OrderService
-{   
+{
     /**
      * Handle discount with option receive and price
      *

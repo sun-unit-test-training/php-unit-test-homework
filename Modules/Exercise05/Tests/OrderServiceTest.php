@@ -66,6 +66,17 @@ class OrderServiceTest extends TestCase
                     'discount_potato' => null,
                 ]
             ],
+            [
+                [
+                    'price' => 1511.33333,
+                    'option_receive' => 2,
+                    'option_coupon' => 1,
+                ], [
+                    'price' => 1209.07,
+                    'discount_pizza' => null,
+                    'discount_potato' => 'Miễn phí khoai tây',
+                ]
+            ],
         ];
     }
 }

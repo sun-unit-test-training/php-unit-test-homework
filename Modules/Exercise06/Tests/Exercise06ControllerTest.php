@@ -42,7 +42,7 @@ class Exercise06ControllerTest extends TestCase
 
         $response->assertStatus(302);
         $this->assertTrue($response->isRedirection());
-        $response->assertSessionHas('result');
+        $response->assertSessionHas('result.time', 180);
         $response->assertSessionHas('_old_input');
     }
 

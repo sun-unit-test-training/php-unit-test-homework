@@ -37,7 +37,12 @@ class CalculateServiceTest extends TestCase
      */
     public function test_calculate($input, $expected)
     {
-        $time = $this->service->calculate($input['bill'], $input['hasWatch']);
+        if (!isset($input['hasWatch'])) {
+            $time = $this->service->calculate($input['bill']);
+        } else {
+            $time = $this->service->calculate($input['bill'], $input['hasWatch']);
+        }
+
         $this->assertEquals($expected, $time);
     }
 
@@ -85,6 +90,11 @@ class CalculateServiceTest extends TestCase
                     'bill' => 5001,
                     'hasWatch' => true,
                 ], 300
+            ],
+            [
+                [
+                    'bill' => 111,
+                ], 0
             ],
         ];
     }
