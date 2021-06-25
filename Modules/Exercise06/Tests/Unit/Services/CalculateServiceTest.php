@@ -28,7 +28,7 @@ class CalculateServiceTest extends TestCase
     /**
      * @dataProvider inputData
      */
-    public function testCalculate($time, $data)
+    public function testCalculateSuccess($time, $data)
     {
         $result = $this->service->calculate($data['bill'], $data['has_watch']);
 

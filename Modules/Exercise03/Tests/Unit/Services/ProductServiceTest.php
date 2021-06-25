@@ -37,7 +37,7 @@ class ProductServiceTest extends TestCase
     /**
      * @dataProvider provideValidTotalProducts
      */
-    public function testCalculateDiscount($discount, $totalProducts)
+    public function testCalculateDiscountSuccess($discount, $totalProducts)
     {
         $result = $this->service->calculateDiscount($totalProducts);
 
